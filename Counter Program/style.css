@@ -1,35 +1,89 @@
-.bigCount{
-    display: grid;
-     align-items: center;
-    /* justify-content: center; */
-    background-color: rgb(70, 70, 229);
-    height: 300px;
-    width: 450px;
-    border-radius: 10px;
-
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    font-family:Arial, Helvetica, sans-serif;
 }
+
+/* MAIN COUNTER BOX */
+
+.bigCount{
+    position:relative;
+    padding:60px 80px;
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    color:white;
+}
+
+/* ROTATING BORDER ANIMATION */
+
+.bigCount::before{
+    content:"";
+    position:absolute;
+    inset:-4px;
+    border-radius:20px;
+    background:linear-gradient(
+        0deg,
+        #00f7ff,
+        #ff00c8,
+        #00f7ff
+    );
+    z-index:-1;
+    animation:rotateBorder 6s linear infinite;
+}
+
+@keyframes rotateBorder{
+    0%{
+        filter:hue-rotate(0deg);
+    }
+    100%{
+        filter:hue-rotate(360deg);
+    }
+}
+
+/* COUNTER NUMBER */
 
 #countlabel{
-    display: block;
-    text-align: center;
-    font-size: 10em;
-    font-family: Helvetica;
+    font-size:70px;
+    font-weight:bold;
+    letter-spacing:2px;
 }
+
+/* BUTTON CONTAINER */
 
 #BtnContainer{
-    /* display: ; */
-    text-align: center;
+    margin-top:30px;
 }
 
+/* BUTTON DESIGN */
+
 .buttons{
-    padding: 10px 20px;
-    font-size: 1.5em;
-    color: white;
-    background-color: rgb(0, 0, 255);
-    border-radius: 5px;
-    cursor: pointer;
-    transition:background-color 0.25;
+    padding:12px 25px;
+    margin:5px;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    background:#00c6ff;
+    color:white;
+    transition:all 0.3s ease;
 }
+
+/* BUTTON HOVER ANIMATION */
+
 .buttons:hover{
-    background-color: rgb(0, 0, 73);
+    transform:scale(1.1);
+    background:#ff00c8;
+}
+
+/* BUTTON CLICK EFFECT */
+
+.buttons:active{
+    transform:scale(0.95);
 }
